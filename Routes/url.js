@@ -20,7 +20,7 @@ router.post("/createShortUrl", async (req, res) => {
         if (url) {
             res.json(url);
         } else {
-            const shortUrl = `${baseUrl}/${urlId}`;
+            const shortUrl = `${baseUrl}/api/${urlId}`;
 
             url = new Url({
                 urlId,
