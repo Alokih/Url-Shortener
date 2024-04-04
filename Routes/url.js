@@ -1,6 +1,8 @@
 import express from "express";
-require(dotenv.config());
-import nanoId from "nanoid";
+import dotenv from "dotenv";
+dotenv.config({ path: "../.env" });
+
+import { nanoid } from "nanoid";
 import Url from "../Models/url.js";
 
 const router = express.Router();
@@ -10,7 +12,7 @@ router.post("/createShortUrl", async (req, res) => {
 
     const baseUrl = process.env.BASE_URL;
 
-    const urlId = nanoId();
+    const urlId = nanoid();
 
     try {
         let url = await Url.findOne({ originalUrl });
@@ -21,9 +23,9 @@ router.post("/createShortUrl", async (req, res) => {
             const shortUrl = `${baseUrl}/${urlId}`;
 
             url = new Url({
+                urlId,
                 originalUrl,
                 shortUrl,
-                urlId,
             });
 
             await url.save();
@@ -35,4 +37,4 @@ router.post("/createShortUrl", async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;
