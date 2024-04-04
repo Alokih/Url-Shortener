@@ -35,7 +35,7 @@ const App = () => {
             <UrlForm onSubmit={handleSubmit} />
             {shortUrl && (
                 <div>
-                    <p>Shortened URL:</p>
+                    <p className="shortened-url">Shortened URL:</p>
                     <a href={shortUrl} target="_blank">
                         {shortUrl}
                     </a>
