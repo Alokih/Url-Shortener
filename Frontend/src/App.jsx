@@ -9,7 +9,7 @@ const App = () => {
     const handleSubmit = async (url) => {
         try {
             const response = await fetch(
-                "http://localhost:6001/api/createShortUrl",
+                "https://url-shortener-backend-eight.vercel.app/api/createShortUrl",
                 {
                     method: "POST",
                     headers: {
