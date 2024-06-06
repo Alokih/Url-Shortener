@@ -4,6 +4,7 @@ import UrlForm from "./UrlForm";
 
 const App = () => {
     const [shortUrl, setShortUrl] = useState("");
+    const [originalUrl, setOriginalUrl] = useState("");
 
     const handleSubmit = async (url) => {
         try {
@@ -24,6 +25,7 @@ const App = () => {
 
             const data = await response.json();
             setShortUrl(data.shortUrl);
+            setOriginalUrl(data.originalUrl);
         } catch (err) {
             console.log(err);
         }
@@ -36,7 +38,7 @@ const App = () => {
             {shortUrl && (
                 <div>
                     <p className="shortened-url">Shortened URL:</p>
-                    <a href={shortUrl} target="_blank">
+                    <a href={originalUrl} target="_blank">
                         {shortUrl}
                     </a>
                 </div>
