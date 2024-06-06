@@ -14,6 +14,10 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(cors({
+    origin: 'https://url-shortener-xi-azure.vercel.app'
+  }));
+
 app.get("/", (req, res) => {
     res.json('Hey There !')
 });
